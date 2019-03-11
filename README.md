@@ -8,3 +8,6 @@
 * late init
 * by (property delegation) (lazy) (med mere)
 * (Extension properties)
+
+
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
