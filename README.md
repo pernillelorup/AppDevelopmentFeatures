@@ -4,3 +4,7 @@
 
 
 ## Advanced properties
+* field - Getter og setter
+* late init
+* by (property delegation) (lazy) (med mere)
+* (Extension properties)
