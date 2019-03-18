@@ -1,11 +1,13 @@
 # Features in App Development
 
 ## SMS
-https://medium.com/@chiragpatel_52497/send-sms-from-android-application-a8a9c1ada8b7
 
 ### Send SMS
 
-In activity_main.xml add a button with id btn_send
+#### activity_main.xml
+
+In activity_main.xml add a button with the id: btn_send
+
 ```xml
 <Button
             android:text="Send sms"
@@ -25,6 +27,26 @@ In activity_main.xml add a button with id btn_send
 It should look something like this:
 
 <img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Send_button.png" width="430" height="400">
+
+#### MainActivity
+
+Inside onCreate() in MainActivity make an OnClickListener() on the send button from activity_main.xml
+
+```kotlin
+btn_send.setOnClickListener {
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.SEND_SMS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.SEND_SMS), requestSendSms)
+            } else {
+                sendSms()
+            }
+        }
+```
+The above code will show a box on your screen asking if you want the app to send and view SMS messages on your device. Press allow.
+<img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/allowMessages_button.png" width="230" height="200">
 
 
 SmsManager API needs SEND_SMS permission. Add permission to the manifest file:
