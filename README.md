@@ -91,6 +91,8 @@ You need 5 parameters:
 
 In the button we add a Toast to give us a message, that the sms has been sent. 
 
+<img scr="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/messageSent.png" width="430" height="400">
+
 The last thing to do is to add permission to the manifest file, because the SmsManager needs SEND_SMS permission.
 
 ```kotlin
