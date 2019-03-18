@@ -103,6 +103,78 @@ Now you should be ready to run the app and press the send button. When you see t
 
 <img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/messageReceived.png" width="200" height="400">
 
+
+
+### Receive SMS
+
+#### MainActivity
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+
+    private val requestReceiveSms = 2
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) !=
+            PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECEIVE_SMS), requestReceiveSms)
+        }
+    }
+}
+```
+
+```xml
+<uses-permission android:name="android.permission.RECEIVE_SMS"/>
+```
+
+
+after activity.
+```xml
+<receiver android:name=".SmsReceiver">
+        <intent-filter>
+             <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+        </intent-filter>
+</receiver>
+```
+
+
+Make a new Kotlin class SmsReceiver.kt
+```kotlin
+class SmsReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+
+        val extras = intent.extras
+
+        if(extras != null) {
+            val sms = extras.get("pdus") as Array<Any>
+            for(i in sms.indices) {
+                val format = extras.getString("format")
+                val smsMessage = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    SmsMessage.createFromPdu(sms[i] as ByteArray, format)
+                } else {
+                    SmsMessage.createFromPdu(sms[i] as ByteArray)
+                }
+                val phoneNumber = smsMessage.originatingAddress
+                val messageText = smsMessage.messageBody.toString()
+
+                Toast.makeText(
+                    context,
+                    "phoneNumber: (private)\n" +
+                            "messageText: $messageText",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+}
+
+```
+
+
+
 ## Advanced properties
 * field - Getter og setter
 * late init
