@@ -30,7 +30,7 @@ It should look something like this:
 
 #### MainActivity
 
-Inside onCreate() in MainActivity make an OnClickListener() on the send button from activity_main.xml
+Inside onCreate() in MainActivity make an setOnClickListener() on the send button from activity_main.xml
 
 ```kotlin
 private val requestSendSms: Int = 2
