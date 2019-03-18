@@ -23,7 +23,7 @@ In activity_main.xml add a button with id btn_send
             app:layout_constraintBottom_toBottomOf="parent"/>
 ```
 It should look like this:
-![alt text](https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Send_button.png&s=5)
+![alt text](https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Send_button.png)
 
 
 SmsManager API needs SEND_SMS permission. Add permission to the manifest file:
