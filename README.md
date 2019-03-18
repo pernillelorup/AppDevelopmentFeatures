@@ -33,7 +33,13 @@ It should look something like this:
 Inside onCreate() in MainActivity make an OnClickListener() on the send button from activity_main.xml
 
 ```kotlin
-btn_send.setOnClickListener {
+private val requestSendSms: Int = 2
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        btn_send.setOnClickListener {
             if (ActivityCompat.checkSelfPermission(
                     this,
                     Manifest.permission.SEND_SMS
@@ -44,6 +50,7 @@ btn_send.setOnClickListener {
                 sendSms()
             }
         }
+    }
 ```
 The above code will show a box on your screen asking if you want the app to send and view SMS messages on your device. Press allow.
 
