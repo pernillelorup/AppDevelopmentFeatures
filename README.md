@@ -54,7 +54,7 @@ private val requestSendSms: Int = 2
 ```
 The above code will show a box on your screen asking if you want the app to send and view SMS messages on your device. Press allow.
 
-<img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/allowMessages.png" width="250" height="150">
+<img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/allowMessages.png" width="300" height="150">
 
 Below onCreate(), make these two methods:
 
