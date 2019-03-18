@@ -62,7 +62,10 @@ Below onCreate(), make these two methods:
 override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == requestSendSms) sendSms()
     }
+```
 
+
+```kotlin
     private fun sendSms() {
         val number = "1234345678"
         val text = "Hello World"
@@ -72,6 +75,8 @@ override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out
         Toast.makeText(this, "Sms sent", Toast.LENGTH_SHORT).show()
     }
 ```
+The onRequestPermissionsResult() is an interface and is the contract for receiving the results for permission requests.
+
 The sendSms() function will make two instances; a number with a String containing the receiving phone number, and a text with the text-string you want to send. 
 
 We use something called SmsManager which is an object that manages SMS operations like sending text. By calling getDafult(), we get access to the operations. 
@@ -86,8 +91,7 @@ You need 5 parameters:
 
 In the button we add a Toast to give us a message, that the sms has been sent. 
 
-
-SmsManager API needs SEND_SMS permission. Add permission to the manifest file:
+The last thing to do is to add permission to the manifest file, because the SmsManager needs SEND_SMS permission.
 
 ```kotlin
 <uses-permission android:name="android.permission.SEND_SMS"/>
