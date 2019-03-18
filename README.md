@@ -102,6 +102,89 @@ The last thing to do is to add permission to the manifest file, because the SmsM
 Now you should be ready to run the app and press the send button. When you see the toast, you can open your messages on your device and see that you have received a text message.
 
 <img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/messageReceived.png" width="200" height="400">
+ 
+ 
+ 
+ 
+ 
+ 
+### Receive SMS
+
+#### MainActivity
+
+In the onCreate() method in MainActivity, add the following code.
+It does the same as in the previous example. It will show a box on your screen asking if you want the app to send and view SMS messages on your device. Press allow.
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+
+    private val requestReceiveSms = 2
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) !=
+            PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECEIVE_SMS), requestReceiveSms)
+        }
+    }
+}
+```
+
+In the AndroidManifest.xml add the code below.
+```xml
+<uses-permission android:name="android.permission.RECEIVE_SMS"/>
+```
+
+Find where the activity ends in AndroidManifest.xml and add the code below. 
+```xml
+<receiver android:name=".SmsReceiver">
+        <intent-filter>
+             <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+        </intent-filter>
+</receiver>
+```
+The receiver name *.SmsReceiver* will be red. 
+Add a new Kotlin class with the same name (SmsReceiver) and add the following code. 
+```kotlin
+
+class SmsReceiver : BroadcastReceiver() {
+    override fun onReceive(context: Context, intent: Intent) {
+
+        val extras = intent.extras
+
+        if(extras != null) {
+            val sms = extras.get("pdus") as Array<Any>
+            for(i in sms.indices) {
+                val format = extras.getString("format")
+                val smsMessage = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    SmsMessage.createFromPdu(sms[i] as ByteArray, format)
+                } else {
+                    SmsMessage.createFromPdu(sms[i] as ByteArray)
+                }
+                val phoneNumber = smsMessage.originatingAddress
+                val messageText = smsMessage.messageBody.toString()
+
+                Toast.makeText(
+                    context,
+                    "phoneNumber: (private)\n" +
+                            "messageText: $messageText",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+}
+
+```
+We start by adding a new value called extras. extras is a Bundle of additional information from Intent. This is used to provide extended information to the component. For example, if we have an action to send an e-mail or text message, we could also include extra pieces of data here to supply a subject, body etc.
+
+**Indsæt forklaring på resten**
+
+
+
+
 
 ## Advanced properties
 * field - Getter og setter
