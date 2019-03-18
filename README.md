@@ -5,6 +5,26 @@ https://medium.com/@chiragpatel_52497/send-sms-from-android-application-a8a9c1ad
 
 ### Send SMS
 
+In activity_main.xml add a button with id btn_send
+```xml
+<Button
+            android:text="Send sms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_send"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+```
+It should look like this:
+![alt text](link "Logo Title Text 1")
+
 
 SmsManager API needs SEND_SMS permission. Add permission to the manifest file:
 
