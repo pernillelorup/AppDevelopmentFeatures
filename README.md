@@ -99,6 +99,9 @@ The last thing to do is to add permission to the manifest file, because the SmsM
 <uses-permission android:name="android.permission.SEND_SMS"/>
 ```
 
+Now you should be ready to run the app and press the send button. When you see the toast, you can open your messages on your device and see that you have received a text message.
+
+<img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/messageReceived.png" width="200" height="400">
 
 ## Advanced properties
 * field - Getter og setter
