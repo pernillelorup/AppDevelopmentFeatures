@@ -22,8 +22,9 @@ In activity_main.xml add a button with id btn_send
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
 ```
-It should look like this:
-![alt text](https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Send_button.png)
+It should look something like this:
+
+<img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Send_button.png" width="430" height="400">
 
 
 SmsManager API needs SEND_SMS permission. Add permission to the manifest file:
