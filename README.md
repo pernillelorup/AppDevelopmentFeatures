@@ -46,7 +46,8 @@ btn_send.setOnClickListener {
         }
 ```
 The above code will show a box on your screen asking if you want the app to send and view SMS messages on your device. Press allow.
-<img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/allowMessages.png" width="230" height="200">
+
+<img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/allowMessages.png" width="350" height="200">
 
 
 SmsManager API needs SEND_SMS permission. Add permission to the manifest file:
