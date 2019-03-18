@@ -56,6 +56,36 @@ The above code will show a box on your screen asking if you want the app to send
 
 <img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/allowMessages.png" width="250" height="150">
 
+Below onCreate(), make these two methods:
+
+```kotlin
+override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (requestCode == requestSendSms) sendSms()
+    }
+
+    private fun sendSms() {
+        val number = "1234345678"
+        val text = "Hello World"
+
+        SmsManager.getDefault().sendTextMessage(number, null, text, null, null)
+
+        Toast.makeText(this, "Sms sent", Toast.LENGTH_SHORT).show()
+    }
+```
+The sendSms() function will make two instances; a number with a String containing the receiving phone number, and a text with the text-string you want to send. 
+
+We use something called SmsManager which is an object that manages SMS operations like sending text. By calling getDafult(), we get access to the operations. 
+
+The sendTextMessage() is the method you use when sending a text based message. 
+You need 5 parameters: 
+* destination address
+* service center address. Use null to use the current default service center
+* text message
+* sentIntent: use null
+* deliveryIntent: use null
+
+In the button we add a Toast to give us a message, that the sms has been sent. 
+
 
 SmsManager API needs SEND_SMS permission. Add permission to the manifest file:
 
