@@ -26,7 +26,7 @@ In activity_main.xml add a button with the id: btn_send
 ```
 It should look something like this:
 
-<img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Send_button.png" width="430" height="400">
+<img src="https://github.com/pernillelorup/AppDevelopmentFeatures/blob/master/Images/Send_button.png" width="430" height="400">
 
 #### MainActivity
 
