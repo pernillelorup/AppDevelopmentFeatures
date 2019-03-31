@@ -192,5 +192,33 @@ We start by adding a new value called extras. extras is a Bundle of additional i
 * by (property delegation) (lazy) (med mere)
 * (Extension properties)
 
+A property in kotlin consists of a field plus a getter and optionally a setter. This means that once a property is specified in a class, default get and set methods are created behind the scenes, and access to the variable from the outside is done by dot-notation. This is as opposed to Java, where the code for a simple Java 'beans' class is very verbose in comparison with Kotlin.
+
+Properties are defined as either val or var, the former one being immutable.
+
+```kotlin
+class Person (val name: String, var age: Int) {
+	…
+}
+```
+
+In this example, a constructor is provided containing the parameters passed when creating an instance of the class. Because val and var are specified, properties are implicitly created in the class, and therefore also the default get/set methods. From the 'outside' of the class, the properties can be accessed as follows:
+
+```kotlin
+p = Person('Joe', 35)
+nameOfPerson = p.name
+```
+
+Custom get and set methods can be provided. When specifying the behaviour of the custom get or set methods, it is done by reference to the backing field by using the keyword 'field'.
+
+```kotlin
+val name: String
+	get() = 'My name is ' + field
+var age: Int
+	set(value) {
+	field += value
+	}
+```
+
 
 https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
