@@ -238,8 +238,54 @@ Instead of this, we can declare the variable as lateinit, meaning that we 'guara
 It is possible to check if a lateinit property has been initialized using the following syntax:
 
 ```kotlin
-if(::propertyToCheck.isInitialized){…do stuff}
+if(::propertyToCheck.isInitialized)
+	{…do stuff}
 ```
+
+By lazy and delegated properties
+
+Delegated properties:
+Delegating a property means implementing a class which will be responsible for returning a value when the property's get method is called. 
+
+The following example is taken from Kotlin's own documentation:
+
+```kotlin
+class Example {
+    var p: String by Delegate()
+}
+
+class Delegate {
+    operator fun getValue(thisRef: Any?, property: KProperty<*>): String {
+        return "$thisRef, thank you for delegating '${property.name}' to me!"
+    }
+ 
+    operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String) {
+        println("$value has been assigned to '${property.name}' in $thisRef.")
+    }
+}
+```
+
+What we should notice here, is that when get and set methods, which are delegated, are called, a reference to the object calling the get/set method is passed as a parameter along with a description of the property.
+
+Output when calling get() in this case according to Kotlin's documentation:
+
+```kotlin
+val e = Example()
+println(e.p)
+Example@33a17727, thank you for delegating ‘p’ to me!
+```
+
+And when calling set(), a 3rd parameter is provided, namely the value being assigned:
+
+```kotlin
+e.p = "NEW"
+NEW has been assigned to ‘p’ in Example@33a17727.
+```
+
+There are some standard delegates in Kotlin, among which are 'by lazy.'
+
+When a property is declared by lazy, a function is provided which will be called upon the first access of the property, which is then initialized this way. The function is only called once (the first time the property is accessed), and then a value specified inside the function is stored as the value of the property.
+
 
 
 https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
