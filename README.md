@@ -194,6 +194,8 @@ We start by adding a new value called extras. extras is a Bundle of additional i
 
 A property in kotlin consists of a field plus a getter and optionally a setter. This means that once a property is specified in a class, default get and set methods are created behind the scenes, and access to the variable from the outside is done by dot-notation. This is as opposed to Java, where the code for a simple Java 'beans' class is very verbose in comparison with Kotlin.
 
+The type of a property does not need to be explicit, if it can be deferred from the initializer.
+
 Properties are defined as either val or var, the former one being immutable.
 
 ```kotlin
@@ -218,6 +220,25 @@ var age: Int
 	set(value) {
 	field += value
 	}
+```
+
+Backing fields are created when needed, meaning that equivalent Java-code would need a named property for using the get and set methods. A backing field is always created when at least one default get or set method is created, or when a custom get or set method uses the 'field' keyword to reference the property.
+Lateinit:
+Can be used on properties declared inside the body of a class - not in constructors. The property must not have a custom getter or setter. Also for top-level properties.
+Lateinit is useful for Android development when declaring properties whose value will be set in the lifecycle methods, and which we thereby can be sure will not be null once accessed.
+
+For example, a Button declared in an activity might first be initialized in the Activity's onCreate() method, so it must be declared as nullable:
+
+```kotlin
+var submitButton: Button? = null
+```
+
+Instead of this, we can declare the variable as lateinit, meaning that we 'guarantee' that the variable will be assigned a value before it is used.
+
+It is possible to check if a lateinit property has been initialized using the following syntax:
+
+```kotlin
+if(::propertyToCheck.isInitialized){…do stuff}
 ```
 
 
