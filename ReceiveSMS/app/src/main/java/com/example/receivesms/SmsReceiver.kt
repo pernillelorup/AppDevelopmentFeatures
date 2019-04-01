@@ -10,7 +10,7 @@ import android.widget.Toast
 class SmsReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
 
-        val extras = intent.extras
+        val extras = intent.extras // ?: return
 
         if(extras != null) {
             val sms = extras.get("pdus") as Array<Any>
