@@ -223,7 +223,9 @@ var age: Int
 ```
 
 Backing fields are created when needed, meaning that equivalent Java-code would need a named property for using the get and set methods. A backing field is always created when at least one default get or set method is created, or when a custom get or set method uses the 'field' keyword to reference the property.
-Lateinit:
+
+Lateinit
+
 Can be used on properties declared inside the body of a class - not in constructors. The property must not have a custom getter or setter. Also for top-level properties.
 Lateinit is useful for Android development when declaring properties whose value will be set in the lifecycle methods, and which we thereby can be sure will not be null once accessed.
 
