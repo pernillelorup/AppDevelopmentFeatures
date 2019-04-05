@@ -239,7 +239,7 @@ It is possible to check if a lateinit property has been initialized using the fo
 
 ```kotlin
 if(::propertyToCheck.isInitialized)
-	{…do stuff}
+	{ … code goes here}
 ```
 
 By lazy and delegated properties
