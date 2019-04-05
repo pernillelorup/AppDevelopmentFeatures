@@ -180,11 +180,7 @@ class SmsReceiver : BroadcastReceiver() {
 ```
 We start by adding a new value called extras. extras is a Bundle of additional information from Intent. This is used to provide extended information to the component. For example, if we have an action to send an e-mail or text message, we could also include extra pieces of data here to supply a subject, body etc.
 
-**Indsæt forklaring på resten**
-Eksemplet med at modtage beskeder virker ikke helt. 
-Jeg kan heller ikke få Anders' eksempel til at virke. 
-
-
+Eksemplet med at modtage beskeder virker ikke helt pga. intent.
 
 
 ## Advanced properties
