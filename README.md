@@ -30,7 +30,7 @@ It should look something like this:
 
 #### MainActivity
 
-Inside onCreate() in MainActivity make an setOnClickListener() on the send button from activity_main.xml
+Inside onCreate() in MainActivity make a setOnClickListener() on the send button from activity_main.xml
 
 ```kotlin
 private val requestSendSms: Int = 2
@@ -79,7 +79,7 @@ The onRequestPermissionsResult() is an interface and is the contract for receivi
 
 The sendSms() function will make two instances; a number with a String containing the receiving phone number, and a text with the text-string you want to send. 
 
-We use something called SmsManager which is an object that manages SMS operations like sending text. By calling getDafult(), we get access to the operations. 
+We use something called SmsManager which is an object that manages SMS operations like sending texts. By calling getDafult(), we get access to the operations. 
 
 The sendTextMessage() is the method you use when sending a text based message. 
 You need 5 parameters: 
@@ -191,7 +191,6 @@ Jeg kan heller ikke få Anders' eksempel til at virke.
 * field - Getter og setter
 * late init
 * by (property delegation) (lazy) (med mere)
-* (Extension properties)
 
 A property in kotlin consists of a field plus a getter and optionally a setter. This means that once a property is specified in a class, default get and set methods are created behind the scenes, and access to the variable from the outside is done by dot-notation. This is as opposed to Java, where the code for a simple Java 'beans' class is very verbose in comparison with Kotlin.
 
