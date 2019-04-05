@@ -237,6 +237,10 @@ var submitButton: Button? = null
 
 Instead of this, we can declare the variable as lateinit, meaning that we 'guarantee' that the variable will be assigned a value before it is used.
 
+```kotlin
+lateinit var submitButton: Button
+```
+
 It is possible to check if a lateinit property has been initialized using the following syntax:
 
 ```kotlin
